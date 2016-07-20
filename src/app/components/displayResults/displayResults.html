@@ -1,0 +1,64 @@
+<md-card flex-offset-sm ng-show={{!hourly.noData}} class="weatherCard">
+<md-card-title  ng-show="{{data.toDrone == 2}}" style="text-align: center;background-color: #4CAF50; color: white"> 
+
+	<md-card-title-text>
+
+		<span class="md-display-3">DRONE TIME</span>
+		<span class="md-subhead">{{data.weekday_name}} - {{data.pretty}} </span>
+
+	</md-card-title-text>
+</md-card-title>
+	
+
+	<md-card-title ng-show="{{data.toDrone == 1}}" style="text-align: center;background-color:#FFC107">		
+		<md-card-title-text >
+			<span class="md-headline">Maybe, Drone at your own risk.</span>
+			<span class="md-subhead">{{data.weekday_name}} - {{data.pretty}} </span>
+		</md-card-title-text>
+	</md-card-title>
+		
+	<md-card-title ng-show="{{data.toDrone == 0}}" style="text-align: center;background-color:#FF5722">
+		<md-card-title-text >
+			<span class="md-headline">No, it's a no drone</span>
+			<span class="md-subhead">{{data.weekday_name}} - {{data.pretty}}</span>
+		</md-card-title-text>
+	</md-card-title>
+	
+	
+	<md-card-content>
+		<div layout="row">
+			<div flex-gt-sm="50" flex="50" layout="column" layout-align="start center">
+				<h3>Wind</h3>
+				<div>{{data.wspd}} mph</div>
+				<div> {{data.wdir.degrees}} deg</div>
+				<div>{{data.wdir.dir}}</div>
+			</div>
+			<div flex-gt-sm="50" flex="50" layout="column" layout-align="start center">
+				<h3>Conditions</h3> 
+				<div>{{data.condition}} - {{data.wx}}</div>
+				
+				<div><img ng-src="{{data.icon_url}}"></div>
+				
+			</div>
+		</div>
+	</md-card-content>
+
+	<md-card-footer layout="row" layout-align="space-between center" style="background-color: #ECEFF1">
+	
+		<md-card-content>{{data.city}}, {{data.country}}</md-card-content>
+	</md-card-footer>
+</md-card>
+
+<md-card flex-offset-sm ng-show={{hourly.noData}}>
+
+		
+	<md-card-title ng-show="{{data.toDrone == 0}}" style="text-align: center;background-color:#ECEFF1">
+		<md-card-title-text >
+			<span class="md-headline">No Data</span>
+			
+		</md-card-title-text>
+	</md-card-title>
+	
+	
+
+</md-card>

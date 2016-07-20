@@ -1,0 +1,80 @@
+	<div layout="column" layout-wrap layout-gt-sm="row">
+		<h2 class="md-title"><i class="material-icons">settings</i>Settings</h2>
+		<fieldset class="standard" layout="column"  ng-controller="selectTimeCtrl as time">
+			<legend>Select times to check</legend>
+			<div layout="row" layout-wrap flex="100">
+			<div ng-repeat="hour in time.hours" class="standard" flex="50">
+					<label>
+					<md-checkbox ng-checked="time.selection.indexOf(hour) > -1" 
+							ng-click="time.toggleSelection(hour)"
+							 value="{{hour}}"  
+							 aria-label="{{ hour }}"
+							 name="selectedHours">
+							{{ hour }}
+							</md-checkbox>
+					
+					</label>
+				</div> 
+				
+		
+			</div>
+			<md-button flex="70" class="md-accent" ng-click="time.closePanel()">Done</md-button>	
+		</fieldset>
+		
+	
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		<fieldset class="standard" layout="column" flex="100" ng-controller="locationSlctCtrl as locationSlct">
+			<legend>Location</legend>
+			<div flex="100">
+
+				<label>
+					<md-checkbox ng-checked="locationSlct.autolocation" ng-click="locationSlct.autolocationToggle()" aria-label="Auto Locations">
+						Auto Location
+					</md-checkbox>
+
+				</label>
+				<p><em>{{main.errorMessageForUser}}</em></p>
+			</div>
+			<div ng-hide="locationSlct.autolocation" flex="100" layout="column" >
+				<!--<div ng-repeat="lookupResult in main.lookupResultsArray">
+					<div ng-click="main.getbyLocations(lookupResult.country,lookupResult.city)">{{lookupResult.city}} in {{ lookupResult.country}}</div>
+
+
+				</div> -->
+				<md-list>
+					<md-list-item ng-repeat="lookupResult in locationSlct.lookupResultsArray" ng-click="locationSlct.getbyLocations(lookupResult.country,lookupResult.city)">
+						<p>{{lookupResult.city}} in {{ lookupResult.country}}</p>
+					</md-list-item>
+				</md-list>
+				
+				<div ng-show="main.locationLookupError">{{locationSlct.locationLookupError}}</div>
+				<md-input-container class="md-block">
+					<label>City</label>
+					<input ng-model="locationSlct.lookUpcity">
+				</md-input-container>
+				<md-button flex="100" class="md-accent" ng-click="locationSlct.geoLookup()">Lookup</md-button>
+			</div>
+		</fieldset>
+				
+
+				
+						
+	
+		
+		
+		
+		
+	</div>
